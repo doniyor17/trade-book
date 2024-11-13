@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: rgb(130, 87, 8);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: rgba(161, 108, 11, 0.79);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+label::first-letter {
+  text-transform: uppercase;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+input:focus {
+  border: 3px solid rgb(130, 87, 8);
+}
+
+header {
+  height: 80px;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+header h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  height: calc(100vh - 160px);
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.wrapper-list {
+  width: 60%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  overflow-y: scroll;
+}
+.wrapper-form {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+}
+
+.wrapper-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper-list-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.wrapper-list-item-content-currency {
+  margin-right: 60px;
+}
+.wrapper-list-item-content-currency strong {
+  margin-right: 10px;
+}
+.wrapper-list-item-content-wallet strong {
+  margin-right: 10px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.update-form-action {
+  display: flex;
+  justify-content: end;
+  margin-top: 60px;
+}
+
+footer {
+  height: 80px;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+footer p {
+  text-align: center;
+}
