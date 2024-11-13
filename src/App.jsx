@@ -23,17 +23,23 @@ const cryptos = [
 ];
 function App() {
   const [crypto, setCrypto] = useState(cryptos);
+  const [selected, setSelected] = useState(cryptos);
+
   return (
     <>
       <Header />
       <div className="container">
         <div className="wrapper">
           <div className="wrapper-list">
-            <List list={crypto} />
+            <List
+              list={crypto}
+              selected={selected}
+              onSelect={setSelected}
+            />
           </div>
           <div className="wrapper-form">
             <div className="form">
-              <UpdateForm />
+              <UpdateForm selected={selected} />
             </div>
           </div>
         </div>

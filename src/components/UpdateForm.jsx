@@ -1,25 +1,26 @@
+/* eslint-disable react/prop-types */
 import Input from './Input';
 import Button from './Button';
-export default function UpdateForm() {
+export default function UpdateForm({ selected }) {
   return (
     <form className="update-form">
-      <h2 className="form-title">Update BTC</h2>
+      <h2 className="form-title">Update {selected?.title}</h2>
       <div className="update-form-title">
         <Input
           label="title"
-          placeholder="BTC"
+          placeholder={selected?.title}
         />
       </div>
       <div className="update-form-title">
         <Input
           label="rate"
-          placeholder="$83000"
+          placeholder={selected?.rate + '$'}
         />
       </div>
       <div className="update-form-title">
         <Input
           label="wallet"
-          placeholder="2.3BTC"
+          placeholder={selected?.wallet}
         />
       </div>
       <div className="update-form-action">

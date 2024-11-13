@@ -1,9 +1,9 @@
 import Button from './Button';
 
 /* eslint-disable react/prop-types */
-function Item({ item }) {
+function Item({ item, selected, onSelect }) {
   return (
-    <li className="wrapper-list-item">
+    <li className={`wrapper-list-item ${item.id === selected?.id ? 'active-item' : ''}`}>
       <div className="wrapper-list-item-content">
         <div className="wrapper-list-item-content-currency">
           <h3>{item.title}</h3>
@@ -23,7 +23,9 @@ function Item({ item }) {
           </div>
         </div>
       </div>
-      <Button>Update</Button>
+      <Button onClick={() => onSelect(item)}>
+        {item.id === selected?.id ? 'Cancel' : 'Select'}
+      </Button>
     </li>
   );
 }
