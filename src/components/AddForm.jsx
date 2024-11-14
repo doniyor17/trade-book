@@ -14,7 +14,7 @@ function AddForm({ isShown, onAddCrypto, onToggleForm }) {
 
     const id = crypto.randomUUID();
 
-    const newCrypto = { id, title, rate, wallet, net: rate * wallet };
+    const newCrypto = { id, title: title.toUpperCase(), rate, wallet, net: rate * wallet };
 
     onAddCrypto(newCrypto);
     onToggleForm();

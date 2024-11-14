@@ -14,7 +14,7 @@ export default function UpdateForm({ selected, isShown, onUpdate, onClearSelecti
 
     const newCrypto = {
       id: selected?.id,
-      title: title ? title : selected?.title,
+      title: title ? title.toUpperCase() : selected?.title.toUpperCase(),
       rate: Number(rate ? rate : selected?.rate),
       wallet: Number(wallet ? wallet : selected?.wallet),
       net: isNaN(net) ? selected.net : net,
