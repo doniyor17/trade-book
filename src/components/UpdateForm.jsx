@@ -1,20 +1,16 @@
 /* eslint-disable react/prop-types */
-import Button from './Button';
 import { useState } from 'react';
-export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
+
+import Button from './Button';
+export default function UpdateForm({ selected, isShown, onUpdate, onClearSelection }) {
   const [title, setTitle] = useState('');
   const [rate, setRate] = useState('');
   const [wallet, setWallet] = useState('');
+
   function handleUpdate(e) {
     e.preventDefault();
 
-    let net;
-    if (rate === 0 || wallet === 0) {
-      net = 0;
-    }
-    if (rate && wallet) {
-      net = rate * wallet;
-    }
+    let net = (rate ? rate : selected?.rate) * (wallet ? wallet : selected?.wallet);
 
     const newCrypto = {
       id: selected?.id,
@@ -23,7 +19,6 @@ export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
       wallet: Number(wallet ? wallet : selected?.wallet),
       net: isNaN(net) ? selected.net : net,
     };
-    console.log(newCrypto);
 
     onUpdate(newCrypto);
     setTitle('');
@@ -32,7 +27,7 @@ export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
   }
   return (
     <form
-      className="update-form"
+      className={`update-form ${isShown ? 'show' : 'hide'} update-form`}
       onSubmit={handleUpdate}
     >
       <h2 className="form-title">Update {selected?.title}</h2>
@@ -41,9 +36,11 @@ export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
         <input
           type="text"
           id="title"
+          className={`${selected?.id ? '' : 'disabled'}`}
           value={title}
-          onChange={e => setTitle(e.target.value)}
           placeholder="Title..."
+          disabled={selected?.id ? false : true}
+          onChange={e => setTitle(e.target.value)}
         />
       </div>
       <div className="update-form-title">
@@ -51,9 +48,11 @@ export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
         <input
           type="text"
           id="rate"
+          className={`${selected?.id ? '' : 'disabled'}`}
           value={rate}
-          onChange={e => setRate(Number(e.target.value))}
           placeholder="Rate..."
+          disabled={selected?.id ? false : true}
+          onChange={e => setRate(Number(e.target.value))}
         />
       </div>
       <div className="update-form-title">
@@ -61,14 +60,21 @@ export default function UpdateForm({ selected, onUpdate, onClearSelection }) {
         <input
           type="text"
           id="wallet"
+          className={`${selected?.id ? '' : 'disabled'}`}
           value={wallet}
-          onChange={e => setWallet(Number(e.target.value))}
           placeholder="Wallet..."
+          disabled={selected?.id ? false : true}
+          onChange={e => setWallet(Number(e.target.value))}
         />
       </div>
       <div className="update-form-action">
-        <Button onClick={onClearSelection}>Clear</Button>
-        <Button>Update</Button>
+        <Button
+          disabled={selected?.id ? false : true}
+          onClick={onClearSelection}
+        >
+          Clear
+        </Button>
+        <Button disabled={selected?.id ? false : true}>Update</Button>
       </div>
     </form>
   );
