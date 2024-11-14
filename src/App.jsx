@@ -9,21 +9,31 @@ const cryptos = [
   {
     id: 1,
     title: 'BTC',
-    rate: '83000',
-    wallet: '2.3 BTC',
-    net: '190 900',
+    rate: 83000,
+    wallet: 2.3,
+    net: 190900,
   },
   {
     id: 2,
     title: 'SOL',
-    rate: '123',
-    wallet: '200 SOL',
-    net: '246 000',
+    rate: 123,
+    wallet: 200,
+    net: 246000,
   },
 ];
 function App() {
   const [crypto, setCrypto] = useState(cryptos);
-  const [selected, setSelected] = useState(cryptos);
+  const [selected, setSelected] = useState(null);
+
+  function handleClearSelection() {
+    setSelected(null);
+  }
+
+  function handleUpdate(crypto) {
+    setCrypto(cryptos =>
+      cryptos.map(item => (item.id === crypto.id ? { ...item, ...crypto } : item)),
+    );
+  }
 
   return (
     <>
@@ -39,7 +49,11 @@ function App() {
           </div>
           <div className="wrapper-form">
             <div className="form">
-              <UpdateForm selected={selected} />
+              <UpdateForm
+                selected={selected}
+                onUpdate={handleUpdate}
+                onClearSelection={handleClearSelection}
+              />
             </div>
           </div>
         </div>

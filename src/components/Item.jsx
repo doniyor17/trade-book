@@ -15,7 +15,7 @@ function Item({ item, selected, onSelect }) {
         <div className="wrapper-list-item-content-wallet">
           <div>
             <strong>Wallet:</strong>
-            <span>{item.wallet}</span>
+            <span>{item.wallet + ' ' + item.title}</span>
           </div>
           <div>
             <strong>Net:</strong>
