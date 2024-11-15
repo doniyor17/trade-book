@@ -11,10 +11,8 @@ function App() {
   let cryptos = [];
   if (list && list.length) {
     cryptos = list;
-  } else {
-    localStorage.setItem('cryptos', JSON.stringify(cryptos));
-    cryptos = [];
   }
+
   const [crypto, setCrypto] = useState(cryptos);
   const [selected, setSelected] = useState(null);
   const [isShown, setIsShown] = useState(false);
@@ -42,6 +40,8 @@ function App() {
 
   function handleAddCrypto(crypto) {
     let list = JSON.parse(localStorage.getItem('cryptos'));
+
+    if (!list) list = [];
 
     localStorage.setItem('cryptos', JSON.stringify([crypto, ...list]));
 
